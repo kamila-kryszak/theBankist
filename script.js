@@ -61,7 +61,7 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
-
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 const displayMovements = function (movements) {
   containerMovements.innerHTML = '';
@@ -82,6 +82,13 @@ const displayMovements = function (movements) {
 
 displayMovements(account1.movements);
 
+const calcDisplayBalance = function (movements) {
+  const balance = movements.reduce((acc, mov) => acc + mov, 0);
+  labelBalance.textContent = `${balance} EURO`;
+}
+
+calcDisplayBalance(account1.movements);
+
 
 const createUsernames = function (accs) {
   accs.forEach(function (acc) {
@@ -90,7 +97,29 @@ const createUsernames = function (accs) {
 };
 
 createUsernames(accounts);
-console.log(accounts);
+// console.log(accounts);
+
+const dogs1 = [5, 2, 4, 1, 15, 8, 3];
+const dogs2 = [16, 6, 10, 5, 6, 1, 4];
+
+const calcAverageHumanAge = function (ages) {
+  const humanAge = ages.map((age) => age <= 2 ? age * 2 : 16 + age * 4);
+  console.log(humanAge);
+  const adults = humanAge.filter((age) => age >= 18);
+  console.log(adults);
+  const averageAge = adults.reduce((acc, age) => acc + age, 0) / adults.length;
+  console.log(averageAge);
+  return averageAge;
+
+}
+
+calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]);
+
+
+
+
+
+
 
 
 
@@ -104,6 +133,6 @@ const currencies = new Map([
   ['GBP', 'Pound sterling'],
 ]);
 
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
 
 // /////////////////////////////////////////////////
